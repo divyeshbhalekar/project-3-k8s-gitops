@@ -146,7 +146,7 @@ jobs:
     - name: Sync ArgoCD Application
       uses: microsec-ai/argocd-actions@main
       with:
-        address: "dargocd.microsec.ai"
+        address: ""
         token: ${{ env.ARGOCD_TOKEN }}
         insecure: "true"
         appName: ${{ env.IMAGE }}
