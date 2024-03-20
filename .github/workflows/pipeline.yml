@@ -141,7 +141,7 @@ jobs:
         images: |
           ${{ env.REGISTRY_HOSTNAME }}/${{ env.IMAGE }}
         tags: |
-            type=sha,enable=true,prefix=,suffix=-slim,format=short
+            type=sha,enable=true,prefix=,suffix=,format=short
     - uses: actions/checkout@v2
     - name: Sync ArgoCD Application
       uses: microsec-ai/argocd-actions@main
