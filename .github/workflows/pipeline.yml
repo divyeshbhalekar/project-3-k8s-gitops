@@ -146,7 +146,8 @@ jobs:
     - name: Sync ArgoCD Application
       uses: microsec-ai/argocd-actions@main
       with:
-        address: "34.30.141.56"
+        # address: "34.30.141.56"
+        address: "myargocd.devopscloudhub.online"
         token: ${{ env.ARGOCD_TOKEN }}
         insecure: "true"
         appName: ${{ env.IMAGE }}
