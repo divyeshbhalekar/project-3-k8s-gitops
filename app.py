@@ -7,13 +7,10 @@
 # def hello_world():
 #     return 'Thank you for checking my repo TY!!!'
 
-from flask import Flask
+def generate_welcome_message():
+    return "Hello, welcome to my page"
 
-app = Flask(__name__)
+if __name__ == "__main__":
+    welcome_message = generate_welcome_message()
+    print(welcome_message)
 
-@app.route('/')
-def hello_world():
-    return 'Thank you for checking my repo TY!!!'
-
-if __name__ == '__main__':
-    app.run(debug=True)
