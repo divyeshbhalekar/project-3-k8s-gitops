@@ -124,16 +124,6 @@ jobs:
     - name: Post Privilege Check
       run: |
         echo ${{ toJSON(steps.k8s_privilege_check.outputs.escalation_report) }}
-    #- name: Install helm
-      #run: |
-          #curl -LO https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
-          #tar -zxvf helm-v3.8.0-linux-amd64.tar.gz
-          #mv linux-amd64/helm /usr/local/bin/helm 
-          #helm version
-    #- name: Lint Helm 
-      #uses: WyriHaximus/github-action-helm3@v2
-      #with:
-        #exec: helm lint ./.helm/app/
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v4
