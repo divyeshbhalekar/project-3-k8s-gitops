@@ -3,5 +3,6 @@
 # Example dependencies
 Werkzeug==2.0.2
 Flask==2.0.2
+Jinja2==3.1.2
 
 
