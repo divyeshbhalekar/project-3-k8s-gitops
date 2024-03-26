@@ -21,9 +21,9 @@ on:
 
 env:
   IMAGE: demo-application
-  REGISTRY_HOSTNAME: demodockeracc
+  # REGISTRY_HOSTNAME: demodockeracc
   ARGOCD_TOKEN : ${{ secrets.ARGOCD_TOKEN }}
-#   REGISTRY_HOSTNAME: 681089424129.dkr.ecr.ap-south-1.amazonaws.com
+  REGISTRY_HOSTNAME: 681089424129.dkr.ecr.ap-south-1.amazonaws.com
   
 
 jobs:
@@ -78,17 +78,17 @@ jobs:
             ${{ env.REGISTRY_HOSTNAME }}/${{ env.IMAGE }}
           tags: |
             type=sha,enable=true,prefix=,suffix=,format=short
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
+      # - name: Login to Docker Hub
+      #   uses: docker/login-action@v2
+      #   with:
+      #       username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #       password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to ECR
+        uses: docker/login-action@v3
         with:
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_TOKEN }}
-    #   - name: Login to ECR
-    #     uses: docker/login-action@v3
-    #     with:
-    #         registry: 681089424129.dkr.ecr.ap-south-1.amazonaws.com
-    #         username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #         password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            registry: 681089424129.dkr.ecr.ap-south-1.amazonaws.com
+            username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         
       - name: docker push
         uses: docker/build-push-action@v3
