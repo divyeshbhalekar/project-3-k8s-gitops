@@ -46,9 +46,9 @@ docker push your-dockerhub-username/your-image-name
 Usage
 Once deployed, the application can be accessed through the assigned Kubernetes service. Monitoring metrics can be viewed through Grafana dashboards, and logs can be viewed and analyzed using Kibana.
 
-Contributing
+### Contribution guidelines ###
 Contributions are welcome! Please feel free to submit a pull request.
 
-License
+### License ###
 This project is licensed under the MIT License.
 
