@@ -1,11 +1,10 @@
 # README #
-![image](https://github.com/divyeshbhalekar/project-3-k8s-gitops/assets/89533742/873ae739-c78c-44b4-b67e-9bb58a9a598a)
-
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
 
 Project Name : HelloWorld-DevOps-Monitoring-Logging
+
+![image](https://github.com/divyeshbhalekar/project-3-k8s-gitops/assets/89533742/873ae739-c78c-44b4-b67e-9bb58a9a598a)
+
+### What is this repository for? ###
 
 Description
 This project is a simple Python application that displays "Hello, World!" It leverages GitHub as a source code repository, incorporates Docker for containerization, Trivy for image scanning, Docker Hub for image hosting, and ArgoCD for Kubernetes deployment. The application is deployed to a Kubernetes cluster running on Google Cloud Platform (GCP). Additionally, Prometheus and Grafana are used for monitoring and alerting, while ELK (Elasticsearch, Logstash, Kibana) stack is used for logging.
