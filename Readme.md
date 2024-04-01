@@ -1,6 +1,6 @@
 # README #
 
-Project Name : HelloWorld-DevOps-Monitoring-Logging
+# Project Name : HelloWorld-DevOps-Monitoring-Logging #
 
 ![image](https://github.com/divyeshbhalekar/project-3-k8s-gitops/assets/89533742/873ae739-c78c-44b4-b67e-9bb58a9a598a)
 
