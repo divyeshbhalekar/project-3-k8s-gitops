@@ -56,6 +56,22 @@ jobs:
           args: |
             --build-arg TMDB_V3_API_KEY=${{ secrets.TMDB_V3_API_KEY }}
           outputs: type=tar,dest=/tmp/${{ env.IMAGE }}.tar
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ steps.meta.outputs.tags }}
+          format: 'table'
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'library'
+          severity: 'CRITICAL,HIGH'
+          output: trivy-results.json
+      - name: Upload Trivy Results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Trivy Report
+          path: trivy-results.json
 
   Push_Artifact_to_Registry:
     if: (github.ref == 'refs/heads/merge_branch' && github.event_name == 'push') || (github.ref == 'refs/heads/master' && github.event_name == 'push') || (github.ref == 'refs/heads/main' && github.event_name == 'push') || (startsWith(github.ref, 'refs/tags/qa-') && github.event_name == 'push') || (startsWith(github.ref, 'refs/tags/prod-') && github.event_name == 'push')
@@ -96,22 +112,22 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ steps.meta.outputs.tags }}
-          format: 'table'
-          exit-code: '0'
-          ignore-unfixed: true
-          vuln-type: 'library'
-          severity: 'CRITICAL,HIGH'
-          output: trivy-results.json
-      - name: Upload Trivy Results
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: Trivy Report
-          path: trivy-results.json
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: ${{ steps.meta.outputs.tags }}
+      #     format: 'table'
+      #     exit-code: '0'
+      #     ignore-unfixed: true
+      #     vuln-type: 'library'
+      #     severity: 'CRITICAL,HIGH'
+      #     output: trivy-results.json
+      # - name: Upload Trivy Results
+      #   uses: actions/upload-artifact@v2
+      #   if: always()
+      #   with:
+      #     name: Trivy Report
+      #     path: trivy-results.json
         
        
   Deploy_to_Dev:
